@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "csg-app"
+    }
+  },
+  "defaultProject": "csg-app",
+  "cli": {
+    "analytics": "1ab3a14e-15c2-41c0-8dba-48c2601246be"
+  }
 }
