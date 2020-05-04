@@ -1,3 +1,18 @@
+// const express = require('express');
+// const bodyparser = require('body-parser');
+// const path = require('path');
+// const api = require('./app_api/routes/index');
+// const port = 3000;
+// const app = express();
+// app.use(express.static(path.join(__dirname, 'dist')));
+// app.use(bodyparser.json());
+// app.use('/api', api);
+// app.get('*', (_req, res) => {
+//     res.sendFile (path.join(__dirname, 'dist/index.html'));
+//     });
+//     app.listen(port, function(){
+//         console.log('Server running on localhost' + port)
+//     });                    
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
