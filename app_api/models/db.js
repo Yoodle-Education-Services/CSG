@@ -3,7 +3,8 @@ const host = process.env.DB_HOST || '127.0.0.1';
 const dbURL = `mongodb://${host}/Loc8r`;
 let dbURI = 'mongodb://localhost/Loc8r';
   if (process.env.NODE_ENV === 'production') {
-      dbURI = 'mongodb://heroku_kk7zgjbq:1rn0lkfjugonjecuoqc95ihurr@ds263448.mlab.com:63448/heroku_kk7zgjbq';
+      dbURI = 'mongodb://heroku_z5cmxjkb:bci9qejrj2ebj0kkdnnbjk58hr@ds149373.mlab.com:49373/heroku_z5cmxjkb';
+      
   }
 const readLine = require('readline');
 
@@ -56,22 +57,5 @@ process.on('SIGTERM', () => {
     process.exit(0);
   });
 });
-
 connect();
-
-//require('./origins');
-// const express = require('express');
-// const router = express.Router();
-// const mongoose = require('mongoose');
-// const db = "mongodb://<dbuser>:<dbpassword>@ds157383.mlab.com:57383/heroku_5rwxggz0";
-// mongoose.Promise = global.Promise;
-// mongoose.connect(db, function(err) {
-//     if(err) {
-//         console.log("Error!" + err);
-//     }
-// });
-//         router.get('/', function(req, res) {
-//             res.send('api works');
-//         });
-    
-// module.exports = router;
+require('./origins');

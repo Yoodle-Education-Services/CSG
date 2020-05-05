@@ -143,7 +143,7 @@ const doAddstore = (req, res, origin) => {
                  .json({"message": "No store to UpdateOne"});
                } 
               });
-  const originsDeleteone = (req, res) => {
+  const storesDeleteone = (req, res) => {
     const {originid, storeid} = req.params;
     if (originid || storeid) {
       return res
