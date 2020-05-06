@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ctrlOrigins = require('../controllers/origins');
-const ctrlStores = require('../controllers/stores')
+const ctrlStores = require('../controllers/stores');
 //origins
 router
 .route('/origins')
