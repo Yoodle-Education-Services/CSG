@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Ori = mongoose.model('Origin');
 const originsCreate = (req, res) => {
-    Ori.create({
+    Ori.creat({
       name: req.body.name,
       backgroundimage: req.body.backgroundimage
     },
