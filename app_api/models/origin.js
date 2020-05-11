@@ -32,7 +32,7 @@ const storeSchema = new mongoose.Schema({
     }
 });
 const originSchema = new mongoose.Schema({
-    name: {
+    origin: {
         type: String,
         required: true
     },

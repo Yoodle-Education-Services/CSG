@@ -1,10 +1,9 @@
 const mongoose  = require('mongoose');
 const host = process.env.DB_HOST || '127.0.0.1';
-const dbURL = `mongodb://${host}/Loc8r`;
-let dbURI = 'mongodb://localhost/Loc8r';
+const dbURL = `mongodb://${host}/Csg`;
+let dbURI = 'mongodb://localhost/Csg';
   if (process.env.NODE_ENV === 'production') {
       dbURI = 'mongodb://heroku_z5cmxjkb:bci9qejrj2ebj0kkdnnbjk58hr@ds149373.mlab.com:49373/heroku_z5cmxjkb';
-      
   }
 const readLine = require('readline');
 
@@ -57,5 +56,7 @@ process.on('SIGTERM', () => {
     process.exit(0);
   });
 });
+
 connect();
-require('./origins');
+
+require('./origins')

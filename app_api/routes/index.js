@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const ctrlOrigins = require('../controllers/origins');
-const ctrlStores = require('../controllers/stores')
+const ctrlStores = require('../controllers/stores');
 //origins
 router
 .route('/origins')
+.get(ctrlOrigins.originsListByOrigin)
 .post(ctrlOrigins.originsCreate);
 router
  .route('/origins/:originid')
@@ -13,7 +14,7 @@ router
  .delete(ctrlOrigins.originsDeleteone);
  //stores
  router
-  .route('origins/:originsid/stores/:storeid')
+  .route('origins/:originid/stores')
   .post(ctrlStores.storesCreate);
 router
  .route('/origins/:originid/stores/:storeid')

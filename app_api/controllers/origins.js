@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Ori = mongoose.model('Origin');
 const originsCreate = (req, res) => {
     Ori.create({
-      name: req.body.name,
+      origin: req.body.origin,
       backgroundimage: req.body.backgroundimage
     },
     (err, origin) => {
@@ -13,6 +13,25 @@ const originsCreate = (req, res) => {
       } else {
         res
           .status(201)
+          .json(origin);
+      }
+    });
+  };
+  const originsListByOrigin = (req, res) => {
+    Ori
+    .find({})
+    .exec((err, origin) => {
+      if (!origin) {
+        return res
+          .status(404)
+          .json({"message": "origin not found"});
+      } else if (err) {
+        return res
+          .status(404)
+          .json(err);
+      } else {
+        return res
+          .status(200)
           .json(origin);
       }
     });
@@ -59,7 +78,7 @@ const originsCreate = (req, res) => {
             .status(400)
             .json(err);
         }
-        origin.name = req.body.name;
+        origin.origin = req.body.origin;
         origin.backgroundimage = req.body.backgroundimage;
         origin.save((err, ori) => {
           if (err) {
@@ -100,6 +119,7 @@ const originsCreate = (req, res) => {
     }
   };
 module.exports = {
+  originsListByOrigin,
     originsCreate, 
     originsReadone,
     originsUpdateone,
