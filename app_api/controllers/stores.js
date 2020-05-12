@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const Ori = mongoose.model('Origin');
-const doAddstore = (req, res, origin) => {
+const doAddStore = (req, res, origin) => {
   if (!origin) {
     res 
      .status(404)
      .json({"message": "Origin not found"});
   } else {
-    const {name, address, city, state, zip, country, phone, website} = req.body;
+  const {name, address, city, state, zip, country, phone, website} = req.body;
   origin.stores.push({
     name, 
     address, 
@@ -23,27 +23,28 @@ const doAddstore = (req, res, origin) => {
         .status(400)
         .json(err);
     } else {
-      const thisStore = origin.stores.length (-1).pop();
+     // const thisStore = origin.stores.length(-1).pop();
       res 
        .status(201)
-       .json(thisStore);
+       .json(origin);
     }
   });
  }
 };
 const storesCreate = (req, res) => {
 const originID = req.params.originid;
+console.log(originID);
   if (originID) {
     Ori
     .findById(originID)
     .select('stores')
-    .exe((err, origin) => {
+    .exec((err, origin) => {
     if (err) {
       res
       .status(400)
       .json(err);
     } else {
-      doAddstore(req, res, origin);
+      doAddStore(req, res, origin);
     }
     });
     } else {
@@ -55,7 +56,7 @@ const originID = req.params.originid;
   const storesReadone = (req, res) => {
     Ori
       .findById(req.params.originid)
-      .select('name stores')
+      .select('origin stores')
       .exec((err, origin) => {
         if (!origin) {
           return res
@@ -77,7 +78,7 @@ const originID = req.params.originid;
           } else {
             response = {
               origin : {
-                name : origin.origin,
+                origin : origin.origin,
                 id : req.params.originid
               },
               store
@@ -98,7 +99,7 @@ const originID = req.params.originid;
          };
                 
   const storesUpdateone = (req, res) => {
-    if (!req.params.originid || !req.params.streid) {
+    if (!req.params.originid || !req.params.storeid) {
       return res
         .status(404)
         .json({
@@ -119,9 +120,9 @@ const originID = req.params.originid;
           return res
             .status(400)
             .json(err);
-        }
+         }
         if(origin.stores && origin.stores.length > 0) {
-          const thisStore = origin.stores.id(req.params.storesid);
+          const thisStore = origin.stores.id(req.params.storeid);
           if (!thisStore) {
              res
               .status(404)
@@ -141,7 +142,7 @@ const originID = req.params.originid;
                  .status(404)
                  .json(err);
               } else {
-                updatestore(origin._id);
+                //updatestore(origin.id);
                 res 
                 .status(200)
                  .json(thisStore);
@@ -154,11 +155,11 @@ const originID = req.params.originid;
           .json({"message": "No store to update"});
         }
       }
-      );
-    };
+    );
+  };
   const storesDeleteone = (req, res) => {
     const {originid, storeid} = req.params;
-    if (originid || storeid) {
+    if (!originid || !storeid) {
       return res
         .status(404)
         .json({'message': 'Not found, originid and storeid are both required'});

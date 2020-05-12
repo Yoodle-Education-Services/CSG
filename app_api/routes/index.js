@@ -14,7 +14,7 @@ router
  .delete(ctrlOrigins.originsDeleteone);
  //stores
  router
-  .route('origins/:originid/stores')
+  .route('/origins/:originid/stores')
   .post(ctrlStores.storesCreate);
 router
  .route('/origins/:originid/stores/:storeid')
