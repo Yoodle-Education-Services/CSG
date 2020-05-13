@@ -9,7 +9,7 @@ import { url } from 'inspector';
 export class CsgDataService {
   private apiBaseUrl = 'http://localhost:3000/api';
   public getOrigins() : Promise<Origin[]> {
-    const Url: string = `${this.apiBaseUrl}/origins/${origin}`;
+    const Url: string = `${this.apiBaseUrl}/origins`;
   return this.http
   .get(Url)
   .toPromise()
