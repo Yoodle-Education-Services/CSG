@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FrameworkComponent } from './framework/framework.component';
+import { OrigiListComponent } from './origi-list/origi-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FrameworkComponent
+    FrameworkComponent,
+    OrigiListComponent
   ],
   imports: [
     BrowserModule,
